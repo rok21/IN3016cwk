@@ -13,7 +13,7 @@ namespace IN3016cwk
 
         public static void OuputText(string text, string filename)
         {
-            using (var fileStream = new FileStream(filename, FileMode.OpenOrCreate))
+            using (var fileStream = new FileStream(filename, FileMode.Create))
             {
                 using (var streamWriter = new StreamWriter(fileStream))
                 {

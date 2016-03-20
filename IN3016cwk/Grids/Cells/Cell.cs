@@ -4,7 +4,7 @@
     { 
         public override string ToString()
         {
-            return $"({Y},{X})";
+            return $"({Y+1},{X+1})";
         }
 
         public abstract bool CanStepIn();
