@@ -1,0 +1,6 @@
+C:\Users\Rokas\Projects\Software Agents IN3016\IN3016cwk\IN3016cwk\bin\Debug\IN3016cwk.exe.config
+C:\Users\Rokas\Projects\Software Agents IN3016\IN3016cwk\IN3016cwk\bin\Debug\IN3016cwk.exe
+C:\Users\Rokas\Projects\Software Agents IN3016\IN3016cwk\IN3016cwk\bin\Debug\IN3016cwk.pdb
+C:\Users\Rokas\Projects\Software Agents IN3016\IN3016cwk\IN3016cwk\obj\Debug\IN3016cwk.csprojResolveAssemblyReference.cache
+C:\Users\Rokas\Projects\Software Agents IN3016\IN3016cwk\IN3016cwk\obj\Debug\IN3016cwk.exe
+C:\Users\Rokas\Projects\Software Agents IN3016\IN3016cwk\IN3016cwk\obj\Debug\IN3016cwk.pdb
