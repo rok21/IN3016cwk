@@ -2,8 +2,8 @@
 {
     public class RewardsConstants
     {
-        public const int SavingThePrincess = 100;
-        public const int SteppingOnFreeCell = 0;
-        public const int GettingKilledByIceKing = -100;
+        public const double SavingThePrincess = 100;
+        public const double SteppingOnFreeCell = 0;
+        public const double GettingKilledByIceKing = -100;
     }
 }

@@ -39,7 +39,7 @@ namespace IN3016cwk.Grids
                 adjecant.Add(this[p.Y - 1][p.X]);
             if (p.X < ColumnCount-1)
                 adjecant.Add(this[p.Y][p.X + 1]);
-            if (p.Y < RowCount)
+            if (p.Y < RowCount -1)
                 adjecant.Add(this[p.Y + 1][p.X]);
 
             return adjecant;

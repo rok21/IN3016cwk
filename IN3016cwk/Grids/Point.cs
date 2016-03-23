@@ -17,6 +17,11 @@ namespace IN3016cwk.Grids
             return other.Y == Y && other.X == X;
         }
 
+        public override string ToString()
+        {
+            return $"({Y + 1},{X + 1})";
+        }
+
         protected void MoveLeft() => X--;
 
         protected void MoveRight() => X++;

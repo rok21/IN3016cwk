@@ -3,7 +3,7 @@ using IN3016cwk.Grids;
 
 namespace IN3016cwk.Helpers
 {
-    class RewardMatrixStringBuilder
+    class MatrixStringBuilder
     {
         public static string GenerateRewardMatrix(Grid grid)
         {
@@ -36,6 +36,34 @@ namespace IN3016cwk.Helpers
             }
 
             return matrixBuilder.ToString();
+        }
+
+        public static string GenerateQMatrix(QMatrix qMatrix)
+        {
+            var matrixBuilder = new StringBuilder();
+            matrixBuilder.AppendLine(GetHeaderRow(qMatrix));
+            foreach (var cell in qMatrix.Keys)
+            {
+                var rowBuilder = new StringBuilder();
+                rowBuilder.AppendFormat("{0}\t", cell);
+                foreach (var otherCell in qMatrix[cell].Keys)
+                {
+                    rowBuilder.AppendFormat("{0}\t", qMatrix[cell][otherCell]);
+                }
+                matrixBuilder.AppendLine(rowBuilder.ToString());
+            }
+            return matrixBuilder.ToString();
+        }
+
+        private static string GetHeaderRow(QMatrix qMatrix)
+        {
+            var rowBuilder = new StringBuilder();
+            rowBuilder.Append("\t");
+            foreach (var cell in qMatrix.Keys)
+            {
+                rowBuilder.AppendFormat("{0}\t", cell);
+            }
+            return rowBuilder.ToString();
         }
 
         private static string GetHeaderRow(Grid grid)
