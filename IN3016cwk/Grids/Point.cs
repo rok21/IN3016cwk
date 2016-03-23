@@ -9,12 +9,20 @@ namespace IN3016cwk.Grids
 
         public bool IsAdjecant(Point other)
         {
-            return Math.Abs(other.Y - Y) < 2 && Math.Abs(other.X - X) < 2 && ! Equals(other);
+            return Math.Abs(other.Y - Y) + Math.Abs(other.X - X) == 1;
         }
 
         public bool Equals(Point other)
         {
             return other.Y == Y && other.X == X;
         }
+
+        protected void MoveLeft() => X--;
+
+        protected void MoveRight() => X++;
+
+        protected void MoveUp() => Y--;
+
+        protected void MoveDown() => Y++;
     }
 }

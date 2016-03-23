@@ -1,11 +1,8 @@
-﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using IN3016cwk.Grids;
 using IN3016cwk.Grids.Cells;
 
-namespace IN3016cwk
+namespace IN3016cwk.Helpers
 {
     public class GridBuilder
     {

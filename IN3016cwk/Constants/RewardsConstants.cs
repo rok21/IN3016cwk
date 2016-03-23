@@ -1,4 +1,4 @@
-﻿namespace IN3016cwk
+﻿namespace IN3016cwk.Constants
 {
     public class RewardsConstants
     {

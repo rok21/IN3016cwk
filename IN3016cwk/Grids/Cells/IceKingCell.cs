@@ -1,4 +1,6 @@
-﻿namespace IN3016cwk.Grids.Cells
+﻿using IN3016cwk.Constants;
+
+namespace IN3016cwk.Grids.Cells
 {
     public class IceKingCell : Cell
     {

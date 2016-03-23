@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using IN3016cwk.Grids;
 
-namespace IN3016cwk
+namespace IN3016cwk.Helpers
 {
-    class RewardMatrixHelper
+    class RewardMatrixStringBuilder
     {
         public static string GenerateRewardMatrix(Grid grid)
         {

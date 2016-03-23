@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace IN3016cwk
+namespace IN3016cwk.Helpers
 {
     public class IoHelper
     {
