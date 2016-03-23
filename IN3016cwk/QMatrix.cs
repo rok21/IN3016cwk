@@ -3,7 +3,7 @@ using IN3016cwk.Grids;
 
 namespace IN3016cwk
 {
-    class QMatrix : Dictionary<Point, Dictionary<Point, int>>
+    public class QMatrix : Dictionary<Point, Dictionary<Point, double>>
     {
         public QMatrix(Grid grid)
         {
@@ -11,7 +11,7 @@ namespace IN3016cwk
             {
                 foreach (var cell in row)
                 {
-                    Add(cell, new Dictionary<Point, int>());
+                    Add(cell, new Dictionary<Point, double>());
                     foreach (var row1 in grid)
                     {
                         foreach (var cell1 in row1)

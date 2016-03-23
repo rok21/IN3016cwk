@@ -16,13 +16,5 @@ namespace IN3016cwk.Grids
         {
             return other.Y == Y && other.X == X;
         }
-
-        protected void MoveLeft() => X--;
-
-        protected void MoveRight() => X++;
-
-        protected void MoveUp() => Y--;
-
-        protected void MoveDown() => Y++;
     }
 }

@@ -9,7 +9,7 @@ namespace IN3016cwk.Grids.Cells
             return true;
         }
 
-        public override int GetReward()
+        public override double GetReward()
         {
             return RewardsConstants.SavingThePrincess;
         }

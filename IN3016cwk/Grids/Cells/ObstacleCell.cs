@@ -7,7 +7,7 @@
             return false;
         }
 
-        public override int GetReward()
+        public override double GetReward()
         {
             throw new System.NotImplementedException();
         }
