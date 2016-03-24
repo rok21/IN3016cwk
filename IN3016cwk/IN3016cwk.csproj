@@ -54,6 +54,7 @@
     <Compile Include="Grids\Cells\PrincessCell.cs" />
     <Compile Include="Grids\Grid.cs" />
     <Compile Include="Helpers\GridBuilder.cs" />
+    <Compile Include="Helpers\GridStringHelper.cs" />
     <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using IN3016cwk.Grids;
 
 namespace IN3016cwk
 {
-    public class QMatrix : Dictionary<Point, Dictionary<Point, double>>
+    public class QMatrix : Dictionary<Point, Dictionary<Point, Double>>
     {
         public QMatrix(Grid grid)
         {

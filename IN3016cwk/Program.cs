@@ -1,10 +1,9 @@
 ﻿using System.Runtime.InteropServices;
+using IN3016cwk.Grids;
 using IN3016cwk.Helpers;
 
 namespace IN3016cwk
 {
-    using Grids;
-
     class Program
     {
         static void Main(string[] args)
@@ -13,9 +12,14 @@ namespace IN3016cwk
             var grid = GridBuilder.BuildGrid(inputStr);
             var bot = BotBuilder.BuildBot(grid);
             bot.Learn();
-            IoHelper.OuputText(MatrixStringBuilder.GenerateQMatrixString(bot.qMatrix), "qMatrix.txt");
+            OutputQMatrix(bot.qMatrix);
+            
+        }
 
-
+        private static void OutputQMatrix(QMatrix qMatrix)
+        {
+            var matrixStr = MatrixStringBuilder.GenerateQMatrix(qMatrix);
+            IoHelper.OuputText(matrixStr, "qMatrix.txt");
         }
 
         private static void OutputRewardMatrix(Grid grid)

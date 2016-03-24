@@ -13,5 +13,10 @@ namespace IN3016cwk.Grids.Cells
         {
             return RewardsConstants.GettingKilledByIceKing;
         }
+
+        public override char GetChar()
+        {
+            return 'k';
+        }
     }
 }

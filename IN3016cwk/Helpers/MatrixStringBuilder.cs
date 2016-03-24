@@ -38,7 +38,7 @@ namespace IN3016cwk.Helpers
             return matrixBuilder.ToString();
         }
 
-        public static string GenerateQMatrixString(QMatrix qMatrix)
+        public static string GenerateQMatrix(QMatrix qMatrix)
         {
             var matrixBuilder = new StringBuilder();
             matrixBuilder.AppendLine(GetHeaderRow(qMatrix));
@@ -55,16 +55,14 @@ namespace IN3016cwk.Helpers
             return matrixBuilder.ToString();
         }
 
-
         private static string GetHeaderRow(QMatrix qMatrix)
         {
             var rowBuilder = new StringBuilder();
             rowBuilder.Append("\t");
-            foreach(var cell in qMatrix.Keys)
+            foreach (var cell in qMatrix.Keys)
             {
                 rowBuilder.AppendFormat("{0}\t", cell);
             }
-
             return rowBuilder.ToString();
         }
 
