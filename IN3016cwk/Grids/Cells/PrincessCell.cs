@@ -18,5 +18,10 @@ namespace IN3016cwk.Grids.Cells
         {
             return 'p';
         }
+
+        public override bool IsFinal()
+        {
+            return true;
+        }
     }
 }

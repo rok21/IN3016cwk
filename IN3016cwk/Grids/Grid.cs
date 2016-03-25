@@ -20,7 +20,7 @@ namespace IN3016cwk.Grids
             return this[row][column];
         }
 
-        public Point GetCurrPoint(Bot bot)
+        public Cell GetCurrCell(Bot bot)
         {
             return this[bot.Y][bot.X];
         }

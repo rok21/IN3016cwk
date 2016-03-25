@@ -7,5 +7,7 @@
         public abstract double GetReward();
 
         public abstract char GetChar();
+
+        public abstract bool IsFinal();
     }
 }

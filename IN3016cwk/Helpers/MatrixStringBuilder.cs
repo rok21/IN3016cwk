@@ -1,5 +1,9 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using IN3016cwk.Grids;
+using IN3016cwk.Grids.Cells;
 
 namespace IN3016cwk.Helpers
 {
@@ -49,6 +53,34 @@ namespace IN3016cwk.Helpers
                 foreach (var otherCell in qMatrix[cell].Keys)
                 {
                     rowBuilder.AppendFormat("{0}\t", qMatrix[cell][otherCell]);
+                }
+                matrixBuilder.AppendLine(rowBuilder.ToString());
+            }
+            return matrixBuilder.ToString();
+        }
+
+        public static string GenerateProperQMatrix(Grid grid, QMatrix qMatrix)
+        {
+            var dic = new Dictionary<Point, double>();
+            foreach (var targetCells in qMatrix.Values)
+            {
+                foreach (var targetCell in targetCells.Keys)
+                {
+                    if (!dic.ContainsKey(targetCell))
+                    {
+                        dic.Add(targetCell, double.MinValue);
+                    }
+                    dic[targetCell] = Math.Max(dic[targetCell], targetCells[targetCell]);
+                }
+            }
+
+            var matrixBuilder = new StringBuilder();
+            foreach (var row in grid)
+            {
+                var rowBuilder = new StringBuilder();
+                foreach (var cell in row)
+                {
+                    rowBuilder.AppendFormat("{0}\t", dic[cell]);
                 }
                 matrixBuilder.AppendLine(rowBuilder.ToString());
             }

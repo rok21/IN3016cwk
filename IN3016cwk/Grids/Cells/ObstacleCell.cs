@@ -16,5 +16,10 @@
         {
             return 'x';
         }
+
+        public override bool IsFinal()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

@@ -8,10 +8,10 @@ namespace IN3016cwk.Grids
 {
     public class Bot : Point
     {
-        private Grid grid;
+        public Grid grid { get; set; }
         public QMatrix qMatrix { get; set; }
 
-        private double epsilon = 1;
+        public double epsilon = 1;
 
         private double discountFactor = 0.8;
         private double learningRate = 1.0;
@@ -22,50 +22,70 @@ namespace IN3016cwk.Grids
             qMatrix = new QMatrix(grid);
         }
 
-        public void Learn()
+        public int FindPrincess()
         {
-            for(int i = 0; i < 1000; i++)
+            var stepCount = 0;
+            while(!grid.GetCurrCell(this).IsFinal())
             {
-                var possibleMoves = grid.GetAdjecantCells(this).Where(cell => cell.CanStepIn()).ToList();
-                var nextCell = ChooseRandom(possibleMoves);
-                UpdateQMatrix(nextCell);
-                X = nextCell.X;
-                Y = nextCell.Y;
-                Console.WriteLine(GridStringHelper.GenerateGridString(grid, this));
+                Move();
+                stepCount++;
             }
+            return grid.GetCurrCell(this) is IceKingCell ? -1 : stepCount;
+        }
 
+        private void Move()
+        {
+            var possibleMoves = grid.GetAdjecantCells(this).Where(cell => cell.CanStepIn()).ToList();
+            var nextCell = ChooseNextCell(possibleMoves);
+            UpdateQMatrix(nextCell);
+            MoveTo(nextCell);
+            //Console.WriteLine(GridStringHelper.GenerateGridString(grid, this));
         }
 
         private void UpdateQMatrix(Cell nextCell)
         {
-            if (nextCell.GetChar() == 'p')
-            {
-                Console.WriteLine("yay!!");
-            }
-            var oldQValue = qMatrix[grid.GetCurrPoint(this)][nextCell];
-            var predictionError = (nextCell.GetReward() +
-                                   discountFactor*
-                                   grid.GetAdjecantCells(nextCell)
-                                       .Where(c => c.CanStepIn())
-                                       .Max(c => qMatrix[nextCell][c])) - oldQValue;
+            var oldQValue = qMatrix[grid.GetCurrCell(this)][nextCell];
+            var movesFromNextCell = grid.GetAdjecantCells(nextCell);
+            var maxQValueFromNextCell = movesFromNextCell.Where(c => c.CanStepIn()).Max(c => qMatrix[nextCell][c]);
 
-            qMatrix[grid.GetCurrPoint(this)][nextCell] = oldQValue + learningRate*predictionError;
+            var predictionError = (nextCell.GetReward() + discountFactor*maxQValueFromNextCell) - oldQValue;
+
+            qMatrix[grid.GetCurrCell(this)][nextCell] = oldQValue + learningRate*predictionError;
+        }
+
+        private void MoveTo(Cell cell)
+        {
+            X = cell.X;
+            Y = cell.Y;
         }
 
         private Cell ChooseNextCell(List<Cell> cells)
         {
-
+            var randomDouble = RandHelper.GetRand().NextDouble();
+            var nextCell = randomDouble < epsilon ? ChooseRandom(cells) : ChooseHighestRewardValue(cells);
+            UpdateEpsilon();
+            return nextCell;
         }
 
         private Cell ChooseHighestRewardValue(List<Cell> cells)
         {
-            return cells.First(x => x.GetReward() == cells.Max(c => c.GetReward()));
+            return cells.Where(x => QValueToStepTo(x) == cells.Max(c => QValueToStepTo(c))).Random();
+        }
+
+        private double QValueToStepTo(Cell cell)
+        {
+            return qMatrix[grid.GetCurrCell(this)][cell];
         }
 
         private Cell ChooseRandom(List<Cell> cells)
         {
-            var rand = new Random();
-            return cells[rand.Next(cells.Count)];
+            return cells.Random();
+        }
+
+        private void UpdateEpsilon()
+        {
+            var k = epsilon >= 0.5 ? 0.99999 : 0.9999;
+            epsilon *= k;
         }
     }
 }
