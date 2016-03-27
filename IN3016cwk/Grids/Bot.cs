@@ -11,13 +11,14 @@ namespace IN3016cwk.Grids
         public Grid grid { get; set; }
         public QMatrix qMatrix { get; set; }
 
-        public double epsilon = 1;
+        public Policy Policy { get; set; }
 
-        private double discountFactor = 0.8;
-        private double learningRate = 1.0;
+        public double discountFactor = 0.99;
+        public double learningRate = 1.0;
 
         public Bot(Grid grid)
         {
+            Policy = new Policy();
             this.grid = grid;
             qMatrix = new QMatrix(grid);
         }
@@ -62,8 +63,8 @@ namespace IN3016cwk.Grids
         private Cell ChooseNextCell(List<Cell> cells)
         {
             var randomDouble = RandHelper.GetRand().NextDouble();
-            var nextCell = randomDouble < epsilon ? ChooseRandom(cells) : ChooseHighestRewardValue(cells);
-            UpdateEpsilon();
+            var nextCell = randomDouble < Policy.epsilon ? ChooseRandom(cells) : ChooseHighestRewardValue(cells);
+            Policy.UpdateEpsilon();
             return nextCell;
         }
 
@@ -80,12 +81,6 @@ namespace IN3016cwk.Grids
         private Cell ChooseRandom(List<Cell> cells)
         {
             return cells.Random();
-        }
-
-        private void UpdateEpsilon()
-        {
-            var k = epsilon >= 0.5 ? 0.99999 : 0.9999;
-            epsilon *= k;
         }
     }
 }
